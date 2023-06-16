@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PCMNG</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Include the Tailwind CSS stylesheet -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white font-sans">
+  <header class="py-4 text-center">
+    <h1 class="text-3xl font-bold">Send File To Your PC</h1>
+  </header>
+  <nav class="flex justify-center bg-gray-800 p-4">
+    <a href="#" onclick="showTextBox()" class="mr-2 px-4 py-2 rounded-md bg-gray-700 hover:bg-gray-600">Send Text</a>
+    <a href="#" onclick="showFileInput()" class="mr-2 px-4 py-2 rounded-md bg-gray-700 hover:bg-gray-600">Send File</a>
+    <a href="/see" class="mr-2 px-4 py-2 rounded-md bg-gray-700 hover:bg-gray-600">Screen</a>
+  </nav>
+  <form id="textForm" style="display:none;" action="/txt" method="post" class="bg-gray-800 rounded-lg p-4 mt-8 mx-4">
+    <label for="text" class="block mb-2 font-bold">Enter text:</label>
+    <input type="text" id="text" name="txt" required class="w-full px-3 py-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+    <button type="submit" class="mt-4 px-4 py-2 rounded-md bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Send</button>
+  </form>
+  <form id="fileForm" style="display:none;" action="/submit-file" method="post" enctype="multipart/form-data" class="bg-gray-800 rounded-lg p-4 mt-8 mx-4">
+    <label for="file" class="block mb-2 font-bold">Select file:</label>
+    <input type="file" id="file" name="file" required class="w-full px-3 py-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+    <button type="submit" class="mt-4 px-4 py-2 rounded-md bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Send</button>
+  </form>
+  <script>
+    function showTextBox() {
+      document.getElementById("textForm").style.display = "block";
+      document.getElementById("fileForm").style.display = "none";
+    }
+
+    function showFileInput() {
+      document.getElementById("textForm").style.display = "none";
+      document.getElementById("fileForm").style.display = "block";
+    }
+  </script>
+</body>
+</html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.4/dist/tailwind.min.css">
+    <style>
+        body {
+            background-color: #1a202c;
+            color: #fff;
+        }
+    </style>
+    <script>
+        var source = new EventSource('/metrics');
+
+        source.onmessage = function(event) {
+            var data = JSON.parse(event.data);
+            document.getElementById('cpu').innerText = data.cpu + '%';
+            document.getElementById('memory').innerText = data.memory + '%';
+            document.getElementById('disk').innerText = data.disk + '%';
+        };
+    </script>
+</head>
+<body>
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold mb-8">Real-time PC Usage Metrics</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="bg-gray-700 rounded-lg shadow-lg p-4">
+                <h2 class="text-xl font-bold mb-4">CPU Usage</h2>
+                <div class="text-4xl font-bold" id="cpu"></div>
+            </div>
+            <div class="bg-gray-700 rounded-lg shadow-lg p-4">
+                <h2 class="text-xl font-bold mb-4">Memory Usage</h2>
+                <div class="text-4xl font-bold" id="memory"></div>
+            </div>
+            <div class="bg-gray-700 rounded-lg shadow-lg p-4">
+                <h2 class="text-xl font-bold mb-4">Disk Usage</h2>
+                <div class="text-4xl font-bold" id="disk"></div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

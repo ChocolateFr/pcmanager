@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Streaming</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #18181b;
+            color: #fff;
+        }
+        .container-fluid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #18181b;
+            border-bottom: 1px solid #444;
+        }
+        .navbar-brand {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        #screen {
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        #timer {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        #back-button {
+            margin-top: 10px;
+        }
+        @media (max-width: 767px) {
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Screen Streaming</a>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <img id="screen" src="/screen" class="img-fluid" alt="Screen">
+                <div id="timer"></div>
+                <a id="back-button" class="btn btn-secondary" href="/">Back</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        var startTime = new Date().getTime();
+        var timer = document.getElementById("timer");
+        setInterval(function() {
+            var now = new Date().getTime();
+            var elapsed = now - startTime;
+            var minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+            timer.innerHTML = "Time elapsed: " + minutes + "m " + seconds + "s";
+        }, 1000);
+    </script>
+</body>
+</html>
