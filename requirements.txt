@@ -1,0 +1,5 @@
+psutils
+flask
+pillow
+mss
+win32api
