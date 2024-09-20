@@ -69,10 +69,9 @@ Development
 If you want to contribute to PCMNG, follow these steps:
 
 1.  Clone the GitHub repository: `git clone https://github.com/erillia/pcmng.git`
-2.  Install the required dependencies: `npm install`
+2.  Install the required dependencies: `pip install -r requirements.txt`
 3.  Make your changes to the code.
-4.  Test your changes: `npm test`
-5.  Submit a pull request to the repository.
+4.  Submit a pull request to the repository.
 
 License
 -------
