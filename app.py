@@ -9,10 +9,14 @@ import io
 import mss
 from PIL import Image
 from flask import Flask, Response, render_template
-import win32api
-import psutil
 
-width, height = win32api.GetSystemMetrics(0), win32api.GetSystemMetrics(1)
+import psutil
+from screeninfo import get_monitors
+
+# Get the primary monitor's width and height
+monitor = get_monitors()[0]
+width, height = monitor.width, monitor.height
+
 
 app = Flask(__name__)
 
@@ -108,4 +112,4 @@ def show_alert(txt):
 
     root.mainloop()
 print('System Ip:',get_router_ip())
-app.run('0.0.0.0',port=80,debug=False)
+app.run('0.0.0.0',port=1234,debug=False)

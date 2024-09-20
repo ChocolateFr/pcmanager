@@ -1,5 +1,5 @@
-psutils
+psutil
 flask
 pillow
 mss
-win32api
+screeninfo

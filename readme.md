@@ -39,7 +39,7 @@ To use PCMNG, follow these steps:
 6.   open the url in any device on router that shown in terminal
 ![IP](img/ip.jpg)
 7.  you see the main page
-![Main Page](img/mainscr.jpg)
+![Main Page](img/mainscr.png)
 
 
 Sending text to pc
